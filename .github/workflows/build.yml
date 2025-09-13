@@ -40,10 +40,15 @@ jobs:
         cd ./dist && \
         ls -R
 
-    # - working-directory: 'layout'
-    #   run: |
-    #     cp ./node_modules/d3/dist/d3.js ./dist/
-    #     cp ./node_modules/elkjs/lib/elk.bundled.js ./dist/
+ # ./node_modules/yoga-layout/dist/
+ # ./node_modules/pixi.js/dist
+ 
+    - working-directory: 'layout'
+      run: |
+        mkdir -pv ./dist/yoga-layout-dist/ && \
+        cp -r ./node_modules/yoga-layout/dist/. ./dist/yoga-layout-dist/ && \
+        mkdir -pv ./dist/pixi.js-dist/ && \
+        cp -r ./node_modules/pixi.js/dist/. ./dist/pixi.js-dist/
 
     - name: Archive Release
       uses: thedoctor0/zip-release@master
